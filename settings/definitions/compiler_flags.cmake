@@ -17,26 +17,14 @@ if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL
     endif()
     
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -Wall -Werror -g -pg -ftest-coverage -fprofile-arcs")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")   
     
-    
-    
-#-----------------------------
-# Define System Architecture
-#-----------------------------
-
-set(BIN_ARCH "linux-${ARCHITECTURE}")
-set(SYSTEM_ARCHITECTURE 32bit)
-IF( ${ARCHITECTURE} STREQUAL "x86_64" )
-  set(SYSTEM_ARCHITECTURE 64bit)
-ENDIF()
-
-     if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fsanitize-coverage=func")
-        set(CMAKE_CXX_COMPILER_ID clang-${ARCHITECTURE})
-     else()
-        set(CMAKE_CXX_COMPILER_ID gcc-${ARCHITECTURE})     
-     endif()   
+    if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fsanitize-coverage=func")
+       set(CMAKE_CXX_COMPILER_ID clang-${ARCHITECTURE})
+    else()
+       set(CMAKE_CXX_COMPILER_ID gcc-${ARCHITECTURE})     
+    endif()   
      
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
     
@@ -54,5 +42,5 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
         add_definitions(/D_AMD64_ /Damd64 /DWIN32_LEAN_AND_MEAN)
     endif()
     
-    set(CMAKE_CXX_COMPILER_ID MSVC-${ARCHITECTURE})            
+    set(CMAKE_CXX_COMPILER_ID msvc-${ARCHITECTURE})            
 endif()

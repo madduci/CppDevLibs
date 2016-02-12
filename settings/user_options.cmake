@@ -5,3 +5,6 @@ if(UNIX)
         set(TOOLCHAIN "" CACHE STRING "Set the toolchain for cross builds" )
     endif(CROSSBUILD)
 endif(UNIX)
+
+option(BUILD_ALL "Build all modules" ON)
+option(BUILD_OPENSSL "Build OpenSSL" ON)
