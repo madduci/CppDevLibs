@@ -1,0 +1,7 @@
+option(BUILD_SHARED_LIBS "Build Shared libraries" OFF)
+if(UNIX)
+    option(CROSSBUILD "Build CrossPlatform libraries" OFF)
+    if(CROSSBUILD)
+        set(TOOLCHAIN "" CACHE STRING "Set the toolchain for cross builds" )
+    endif(CROSSBUILD)
+endif(UNIX)
