@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.4.0 FATAL_ERROR)
 
 message(STATUS "Preparing OpenSSL 1.0.2f")
 
-set(SOURCE_DIR ${CMAKE_BINARY_DIR}/OpenSSL)
+set(SOURCE_DIR ${CMAKE_BINARY_DIR}/modules/OpenSSL)
 
 #-----------------------------
 # Define OpenSSL Commands
@@ -93,7 +93,7 @@ ExternalProject_Add(
     URL               "http://openssl.org/source/openssl-1.0.2f.tar.gz"
     URL_HASH          SHA1=2047c592a6e5a42bd37970bdb4a931428110a927
     #--Configure step-------------
-    SOURCE_DIR        ${SOURCE_DIR}/source
+    SOURCE_DIR        ${SOURCE_DIR}/src
     CONFIGURE_COMMAND ""
     #--Build step-------------
     BUILD_COMMAND     ""
@@ -116,7 +116,7 @@ ExternalProject_Add(
     UPDATE_COMMAND    ""
     DOWNLOAD_COMMAND ""
     #--Configure step-------------
-    SOURCE_DIR        ${SOURCE_DIR}/source
+    SOURCE_DIR        ${SOURCE_DIR}/src
     CONFIGURE_COMMAND ${OpenSSL_Config_Command} ${OpenSSL_ARCHITECTURE} ${OPENSSL_LINK_TYPE} ${OPENSSL_EXTRA_OPTIONS} --prefix=${OPENSSL_OUTPUT_DIR}
     #--Build step-------------
     BUILD_COMMAND     ${OpenSSL_Build_Command}

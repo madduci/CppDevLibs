@@ -14,7 +14,7 @@ endif(NOT CMAKE_BUILD_TYPE)
 # Detect Platform
 #-----------------------------
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/definitions/architecture.cmake)
+include(${CMAKE_SOURCE_DIR}/settings/definitions/architecture.cmake)
 target_architecture(ARCHITECTURE)
 message(STATUS "Architecture detected: ${ARCHITECTURE}")
 
@@ -28,10 +28,8 @@ message(STATUS "Architecture detected: ${ARCHITECTURE}")
 # Apply options for compilers
 #-----------------------------
 
-set(BIN_ARCH "Undefined")
-
 include(CheckCXXCompilerFlag)
-include(${CMAKE_CURRENT_SOURCE_DIR}/definitions/compiler_flags.cmake)
+include(${CMAKE_SOURCE_DIR}/settings/definitions/compiler_flags.cmake)
 
 if(MSVC)
     set(MSBUILD_OPTIONS /p:Configuration=Release)
@@ -39,3 +37,9 @@ if(MSVC)
         set(MSBUILD_OPTIONS /p:Configuration=Debug)
     endif()
 endif(MSVC)
+
+#-----------------------------
+# Detect Required tools
+#-----------------------------
+
+include(${CMAKE_SOURCE_DIR}/settings/definitions/requirements.cmake)
