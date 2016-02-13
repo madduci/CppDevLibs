@@ -7,3 +7,7 @@ endif()
 if(BUILD_ALL OR BUILD_BOOST)
     include(boost.cmake)
 endif()
+
+if(BUILD_ALL OR BUILD_GTEST)
+    include(googletest.cmake)
+endif()

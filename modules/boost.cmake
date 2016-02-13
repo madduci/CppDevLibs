@@ -33,7 +33,7 @@ if(CROSSBUILD)
 endif()
 
 set(BOOST_ADDRESS_MODEL address-model=32)
-if(${CMAKE_CL_64} OR ${ARCHITECTURE} STREQUAL "x86_64") #64 bit compiler
+if(${ARCHITECTURE} STREQUAL "x86_64") #64 bit compiler
   set(BOOST_ADDRESS_MODEL address-model=64)
 endif()
 
