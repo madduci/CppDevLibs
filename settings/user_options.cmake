@@ -8,3 +8,4 @@ endif(UNIX)
 
 option(BUILD_ALL "Build all modules" ON)
 option(BUILD_OPENSSL "Build OpenSSL" ON)
+option(BUILD_BOOST "Build Boost" ON)
