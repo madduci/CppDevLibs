@@ -73,7 +73,7 @@ endif()
 #-----------------------------
 
 set(BOOST_BUILD_OPTIONS ${BOOST_ADDRESS_MODEL} ${BOOST_ARCHITECTURE} ${BOOST_TOOLSET} ${BOOST_BUILD_TYPE} ${BOOST_LINK_TYPE})
-set(BOOST_BUILD_FLAGS --threading=multi --warnings=off --warning-as-errors=off)
+set(BOOST_BUILD_FLAGS --threading=multi --warning-as-errors=off)
 set(BOOST_BUILD_COMMAND ${Boost_b2_Command} install ${BOOST_BUILD_OPTIONS} ${BOOST_BUILD_FLAGS} -j2)
 
 #-----------------------------

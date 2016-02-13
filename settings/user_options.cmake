@@ -1,4 +1,4 @@
-option(BUILD_SHARED_LIBS "Build Shared libraries" OFF)
+option(BUILD_SHARED_LIBS "Build Shared libraries" ON)
 if(UNIX)
     option(CROSSBUILD "Build CrossPlatform libraries" OFF)
     if(CROSSBUILD)
