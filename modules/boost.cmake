@@ -21,7 +21,7 @@ endif()
 # Define Boost Modules
 #-----------------------------
 
-set(BOOST_MODULES --with-libraries=atomic,chrono,date_time,filesystem,log,log_setup,program_options,signals,system,thread)
+set(BOOST_MODULES --with-libraries=atomic,chrono,date_time,filesystem,log,program_options,signals,system,thread)
 
 #-----------------------------
 # Define Boost Compile Type and Toolset
