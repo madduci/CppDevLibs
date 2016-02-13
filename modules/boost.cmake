@@ -18,12 +18,6 @@ elseif( WIN32 )
 endif()
 
 #-----------------------------
-# Define Boost Modules
-#-----------------------------
-
-set(BOOST_MODULES --with-libraries=atomic,chrono,date_time,filesystem,log,program_options,signals,system,thread)
-
-#-----------------------------
 # Define Boost Compile Type and Toolset
 #-----------------------------
 
@@ -120,7 +114,7 @@ ExternalProject_Add(
     DOWNLOAD_COMMAND ""
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
-    CONFIGURE_COMMAND ${Boost_Bootstrap_Command} ${BOOST_MODULES} --prefix=${BOOST_OUTPUT_DIR}
+    CONFIGURE_COMMAND ${Boost_Bootstrap_Command} --prefix=${BOOST_OUTPUT_DIR}
     #--Build step-------------
     BUILD_COMMAND     ${BOOST_BUILD_COMMAND}
     BUILD_IN_SOURCE   1
