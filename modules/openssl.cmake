@@ -57,14 +57,14 @@ set(OPENSSL_OUTPUT_DIR ${INSTALL_DIR}/OpenSSL)
 set(OPENSSL_LINK_TYPE no-shared)
 #Under Windows, if static, build nt.mak, otherwise ntdll.mak
 if(WIN32)
-  set(OpenSSL_Build_Command ${OpenSSL_Build_Command} & nmake -f ms\\nt.mak clean )
+  set(OpenSSL_Build_Command ${OpenSSL_Build_Command} & nmake -f ms\\nt.mak clean & nmake -f ms\\nt.mak)
   set(OpenSSL_Install_Command nmake -f ms\\nt.mak install)
 endif()
 
 if(BUILD_SHARED_LIBS)
   set(OPENSSL_LINK_TYPE shared)
   if(WIN32)
-    set(OpenSSL_Build_Command ${OpenSSL_Build_Command} & nmake -f ms\\ntdll.mak clean )
+    set(OpenSSL_Build_Command ${OpenSSL_Build_Command} & nmake -f ms\\ntdll.mak clean & nmake -f ms\\ntdll.mak)
     set(OpenSSL_Install_Command nmake -f ms\\ntdll.mak install)
   endif()
 endif()
@@ -119,7 +119,7 @@ ExternalProject_Add(
     SOURCE_DIR        ${SOURCE_DIR}/src
     CONFIGURE_COMMAND ${OpenSSL_Config_Command} ${OpenSSL_ARCHITECTURE} ${OPENSSL_LINK_TYPE} ${OPENSSL_EXTRA_OPTIONS} --prefix=${OPENSSL_OUTPUT_DIR}
     #--Build step-------------
-    BUILD_COMMAND     ${OpenSSL_Build_Command}
+    BUILD_COMMAND     "${OpenSSL_Build_Command}"
     BUILD_IN_SOURCE   1
     #--Install step---------------
     INSTALL_COMMAND   ${OpenSSL_Install_Command}
@@ -127,6 +127,8 @@ ExternalProject_Add(
 )
 
 add_dependencies(OpenSSL OpenSSL_Download)
+
+message(STATUS "OpenSSL Build command: ${OpenSSL_Build_Command}")
 
 set(OpenSSL_ROOT_DIR    ${OPENSSL_OUTPUT_DIR})
 set(OpenSSL_INCLUDE_DIR ${OPENSSL_OUTPUT_DIR}/include/)
