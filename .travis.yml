@@ -2,6 +2,7 @@ language: cpp
 sudo: required
 os: linux 
 dist: trusty
+cache: apt
 script:
   - mkdir build
   - cd build

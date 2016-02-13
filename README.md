@@ -1,7 +1,13 @@
 # CppDevLibs
 
-Collection of Libraries for C++ development
+[![Build Status](https://travis-ci.org/madduci/CppDevLibs.svg?branch=master)](https://travis-ci.org/madduci/CppDevLibs)
 
-*Dependences required*
+A collection of Libraries for C++ development
 
-* Perl (for OpenSSL)
+## Libraries (could be opted-out)
+
+* OpenSSL 1.0.2f
+
+## Required tools
+
+* Strawberry Perl (for OpenSSL under Windows)
