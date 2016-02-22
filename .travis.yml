@@ -3,19 +3,13 @@ sudo: required
 os: linux 
 dist: trusty
 cache: apt
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get dist-upgrade -y
+  
 script:
   - mkdir build
   - cd build
   - cmake .. && make && make install
   
 compiler: gcc
-addons: 
-  apt: 
-    sources: 
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-5
-env: 
-  - COMPILER=g++-5
-  - CXX=g++-5
-  
