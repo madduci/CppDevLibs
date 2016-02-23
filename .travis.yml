@@ -6,7 +6,7 @@ cache: apt
 addons:
  apt:
    sources:
-     - llvm-toolchain-trusty
+     - llvm-toolchain-trusty-3.7
    packages:
      - clang-3.7
      - cmake   
