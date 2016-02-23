@@ -10,9 +10,6 @@ addons:
    packages:
    - gcc-5
    - cmake   
-before_script:
-  - export CC=gcc-5
-  - export CXX=g++-5 
 script:
   - mkdir build
   - cd build
