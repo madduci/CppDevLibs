@@ -2,6 +2,8 @@ language: cpp
 sudo: required
 os: linux 
 dist: trusty
+compiler: gcc
+cache: apt
 before_script:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
@@ -10,4 +12,5 @@ script:
   - mkdir build
   - cd build
   - cmake .. && make && make install
-compiler: gcc-5
+install:
+  - if [ "$CXX" = "g++" ]; then export CC="gcc-5"; fi
