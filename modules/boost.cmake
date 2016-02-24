@@ -32,9 +32,9 @@ if(${ARCHITECTURE} STREQUAL "x86_64") #64 bit compiler
 endif()
 
 if (${CMAKE_CXX_COMPILER_ID} MATCHES "gcc")
-  set(BOOST_TOOLSET toolset=gcc)
+  #set(BOOST_TOOLSET toolset=gcc)
 elseif (${CMAKE_CXX_COMPILER_ID} MATCHES "clang")
-  set(BOOST_TOOLSET toolset=clang)
+  #set(BOOST_TOOLSET toolset=clang)
 elseif(MSVC) #MSVC
   set(BOOST_TOOLSET toolset=msvc)  
   if(MSVC_VERSION EQUAL 1700)
