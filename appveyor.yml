@@ -12,8 +12,8 @@ matrix:
     build_type: Release
 
 before_build:
-  configuration: {build_type}
-  cmd: cmake -DCMAKE_BUILD_TYPE={build_type} .
+  configuration: %build_type%
+  cmd: cmake -DCMAKE_BUILD_TYPE=%build_type% .
         
 build:
   project: ALL_BUILD.vcxproj
