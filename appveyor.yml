@@ -6,11 +6,14 @@ platform:
 
 matrix:
   fast_finish: true
-  before_build:
-    - configuration: Debug
-      cmd: cmake -DCMAKE_BUILD_TYPE=Debug .
-    - configuration: Release
-      cmd: cmake -DCMAKE_BUILD_TYPE=Release .
+  - environment:
+    build_type: Debug
+  - environment:
+    build_type: Release
+
+before_build:
+  configuration: {build_type}
+  cmd: cmake -DCMAKE_BUILD_TYPE={build_type} .
         
 build:
   project: ALL_BUILD.vcxproj
