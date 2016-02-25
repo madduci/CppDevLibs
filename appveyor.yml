@@ -4,12 +4,12 @@ platform:
   - x86
   - x64
 
+environment:
+  build_type: Debug
+  build_type: Release
+  
 matrix:
   fast_finish: true
-  - environment:
-    build_type: Debug
-  - environment:
-    build_type: Release
 
 before_build:
   configuration: %build_type%
