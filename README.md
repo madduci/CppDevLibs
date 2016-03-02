@@ -7,7 +7,7 @@ A collection of Libraries for C++ development
 
 ## Libraries (could be opted-out)
 
-* OpenSSL 1.0.2f
+* OpenSSL 1.0.2g
 * Boost 1.60.0
 * GoogleTest 1.7.0
 
