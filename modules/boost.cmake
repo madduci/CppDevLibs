@@ -32,9 +32,7 @@ if(${ARCHITECTURE} STREQUAL "x86_64") #64 bit compiler
 endif()
 
 if (${CMAKE_CXX_COMPILER_ID} MATCHES "gcc")
-  execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion
-                  OUTPUT_VARIABLE GCC_VERSION)
-  set(BOOST_TOOLSET toolset=gcc-${GCC_VERSION})
+  #
 elseif(MSVC) #MSVC
   set(BOOST_TOOLSET toolset=msvc)  
   if(MSVC_VERSION EQUAL 1700)
