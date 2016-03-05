@@ -31,10 +31,9 @@ if(${ARCHITECTURE} STREQUAL "x86_64") #64 bit compiler
   set(BOOST_ADDRESS_MODEL address-model=64)
 endif()
 
-if (${CMAKE_CXX_COMPILER_ID} MATCHES "gcc")
-  #set(BOOST_TOOLSET toolset=gcc)
-elseif (${CMAKE_CXX_COMPILER_ID} MATCHES "clang")
-  #set(BOOST_TOOLSET toolset=clang)
+if (${CMAKE_CXX_COMPILER_ID} MATCHES "gcc" OR 
+    ${CMAKE_CXX_COMPILER_ID} MATCHES "clang")
+  set(BOOST_TOOLSET toolset=${CMAKE_CXX_COMPILER_ID})
 elseif(MSVC) #MSVC
   set(BOOST_TOOLSET toolset=msvc)  
   if(MSVC_VERSION EQUAL 1700)
