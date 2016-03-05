@@ -32,7 +32,7 @@ set(GTest_OPTIONS
   -Dgtest_build_tests=OFF
   -Dgtest_build_samples=OFF 
   -Dgtest_disable_pthreads=ON
-  -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS}
+  -DBUILD_SHARED_LIBS=OFF
   -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
   -DCMAKE_INSTALL_PREFIX=${GTest_OUTPUT_DIR}
 )
@@ -134,14 +134,16 @@ endif()
 #gtest
 project(gtest CXX)
 add_library(gtest UNKNOWN IMPORTED)
-set_property(TARGET gtest PROPERTY IMPORTED_LOCATION ${GTEST_LIBRARY_PATH} )
+set_property(TARGET gtest PROPERTY IMPORTED_LOCATION
+                ${GTEST_LIBRARY_PATH} )
 
 add_dependencies(gtest GTest)
 
 #gtest_main
 project(gtest_main CXX)
 add_library(gtest_main UNKNOWN IMPORTED)
-set_property(TARGET gtest_main PROPERTY IMPORTED_LOCATION ${GTEST_MAIN_LIBRARY_PATH} )
+set_property(TARGET gtest_main PROPERTY IMPORTED_LOCATION
+                ${GTEST_MAIN_LIBRARY_PATH} )
 
 add_dependencies(gtest_main GTest)
 
