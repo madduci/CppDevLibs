@@ -32,9 +32,9 @@ include(CheckCXXCompilerFlag)
 include(${CMAKE_SOURCE_DIR}/settings/definitions/compiler_flags.cmake)
 
 if(MSVC)
-    set(MSBUILD_OPTIONS "--config Release")
+    set(MSBUILD_OPTIONS " --config Release ")
     if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        set(MSBUILD_OPTIONS "--config Debug")
+        set(MSBUILD_OPTIONS " --config Debug ")
     endif()
 endif(MSVC)
 
