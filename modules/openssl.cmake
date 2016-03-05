@@ -10,7 +10,7 @@ set(SOURCE_DIR ${CMAKE_BINARY_DIR}/modules/OpenSSL)
 
 if( UNIX )
   set( OpenSSL_Config_Command ./Configure )
-  set( OpenSSL_Build_Command make -j2)
+  set( OpenSSL_Build_Command make)
   set( OpenSSL_Install_Command make install)
 elseif( WIN32 )
   set( OpenSSL_Config_Command perl Configure)
