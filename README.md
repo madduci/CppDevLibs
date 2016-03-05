@@ -10,6 +10,7 @@ A collection of Libraries for C++ development
 * OpenSSL 1.0.2g
 * Boost 1.60.0
 * GoogleTest 1.7.0
+* Libevent 2.1.5-beta
 
 ## Required tools
 
