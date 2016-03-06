@@ -12,7 +12,7 @@ if( UNIX )
   set( libevent_Build_Command make -j2)
   set( libevent_Install_Command make install)
 elseif( WIN32 )
-  set( libevent_Build_Command cmake build . --target ALL_BUILD ${MSBUILD_OPTIONS})
+  set( libevent_Build_Command msbuild ${MSBUILD_OPTIONS} ALL_BUILD.vcxproj)
   set( libevent_Install_Command ) #TODO
 endif()
 

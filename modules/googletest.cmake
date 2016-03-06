@@ -11,7 +11,7 @@ set(SOURCE_DIR ${CMAKE_BINARY_DIR}/gtest)
 if( UNIX )
   set( GTest_Build_Command make -j2)
 elseif( WIN32 )
-  set( GTest_Build_Command cmake build . --target ALL_BUILD ${MSBUILD_OPTIONS})
+  set( GTest_Build_Command msbuild ${MSBUILD_OPTIONS} ALL_BUILD.vcxproj)
 endif()
 
 #-----------------------------
