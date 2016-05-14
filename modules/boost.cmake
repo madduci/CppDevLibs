@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
 
-message(STATUS "Preparing Boost 1.60")
+set(BOOST_VERSION 1.61.0)
+set(BOOST_PACKAGE_VERSION 1_61_0)
+
+message(STATUS "Preparing Boost ${BOOST_VERSION}")
 
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/Boost)
 
@@ -85,8 +88,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Download step--------------
     DOWNLOAD_DIR      ${SOURCE_DIR}/download
-    URL               "http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.gz"
-    URL_HASH          SHA1=ac74db1324e6507a309c5b139aea41af624c8110
+    URL               "http://downloads.sourceforge.net/project/boost/boost/${BOOST_VERSION}/boost_${BOOST_PACKAGE_VERSION}.tar.gz"
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
     CONFIGURE_COMMAND ""
