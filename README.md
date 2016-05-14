@@ -8,7 +8,7 @@ A collection of Libraries for C++ development
 ## Libraries (could be opted-out)
 
 * OpenSSL 1.0.2h
-* Boost 1.60.0
+* Boost 1.61.0
 * GoogleTest 1.7.0
 * Libevent 2.1.5-beta
 
