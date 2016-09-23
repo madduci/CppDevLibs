@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
 
-message(STATUS "Preparing OpenSSL 1.1.0")
+message(STATUS "Preparing OpenSSL 1.0.2i")
 
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/modules/OpenSSL)
 
@@ -91,7 +91,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Download step--------------
     DOWNLOAD_DIR      ${SOURCE_DIR}/download
-    URL               "https://openssl.org/source/openssl-1.1.0.tar.gz"
+    URL               "https://openssl.org/source/openssl-1.0.2i.tar.gz"
     URL_HASH          SHA1=15e651c40424abdaeba5d5c1a8658e8668e798c8
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/src
