@@ -92,7 +92,7 @@ ExternalProject_Add(
     #--Download step--------------
     DOWNLOAD_DIR      ${SOURCE_DIR}/download
     URL               "https://openssl.org/source/openssl-1.0.2i.tar.gz"
-    URL_HASH          SHA1=15e651c40424abdaeba5d5c1a8658e8668e798c8
+    URL_HASH          SHA1=25a92574ebad029dcf2fa26c02e10400a0882111
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/src
     CONFIGURE_COMMAND ${OpenSSL_Config_Command} ${OpenSSL_ARCHITECTURE} ${OPENSSL_LINK_TYPE} ${OPENSSL_EXTRA_OPTIONS} --prefix=${OPENSSL_OUTPUT_DIR}
