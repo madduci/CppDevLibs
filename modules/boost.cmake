@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
 
-set(BOOST_VERSION 1.61.0)
-set(BOOST_PACKAGE_VERSION 1_61_0)
+set(BOOST_VERSION 1.62.0)
+set(BOOST_PACKAGE_VERSION 1_62_0)
 
 message(STATUS "Preparing Boost ${BOOST_VERSION}")
 
