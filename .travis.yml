@@ -11,6 +11,6 @@ before_script:
 script:
   - mkdir build
   - cd build
-  - cmake .. && make && make install
+  - cmake .. && cmake --build .
 install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
