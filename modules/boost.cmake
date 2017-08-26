@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
 
-set(BOOST_VERSION 1.63.0)
-set(BOOST_PACKAGE_VERSION 1_63_0)
+set(BOOST_VERSION 1.65.0)
+set(BOOST_PACKAGE_VERSION 1_65_0)
 
 message(STATUS "Preparing Boost ${BOOST_VERSION}")
 
@@ -44,6 +44,8 @@ elseif(MSVC) #MSVC
     set(BOOST_TOOLSET ${BOOST_TOOLSET}-12.0)
   elseif(MSVC_VERSION EQUAL 1900)
     set(BOOST_TOOLSET ${BOOST_TOOLSET}-14.0)
+  else()
+    set(BOOST_TOOLSET ${BOOST_TOOLSET}-15.0)
   endif()
 elseif(CROSSBUILD)
   set(BOOST_TOOLSET toolset=${CMAKE_CROSS_TOOLSET})
