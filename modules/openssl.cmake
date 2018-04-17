@@ -91,8 +91,8 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Download step--------------
     DOWNLOAD_DIR      ${SOURCE_DIR}/download
-    URL               "https://openssl.org/source/openssl-1.0.2k.tar.gz"
-    URL_HASH          SHA1=5f26a624479c51847ebd2f22bb9f84b3b44dcb44
+    URL               "https://openssl.org/source/openssl-1.0.2o.tar.gz"
+    #URL_HASH          SHA1=5f26a624479c51847ebd2f22bb9f84b3b44dcb44
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/src
     CONFIGURE_COMMAND ${OpenSSL_Config_Command} ${OpenSSL_ARCHITECTURE} ${OPENSSL_LINK_TYPE} ${OPENSSL_EXTRA_OPTIONS} --prefix=${OPENSSL_OUTPUT_DIR}
