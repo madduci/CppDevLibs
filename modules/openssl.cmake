@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7.0 FATAL_ERROR)
 
-message(STATUS "Preparing OpenSSL 1.0.2l")
+message(STATUS "Preparing OpenSSL 1.0.2o")
 
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/modules/OpenSSL)
 
