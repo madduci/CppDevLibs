@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7.0 FATAL_ERROR)
 
 message(STATUS "Preparing libevent 2.1.8-stable")
 
@@ -67,7 +67,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Download step--------------
     DOWNLOAD_DIR      ${SOURCE_DIR}/download
-    URL               "https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz"
+    URL               "https://github.com/libevent/libevent/archive/release-2.1.8-stable.zip"
     #URL_HASH          SHA1=bea0ae37b0446d796461b669f931a20cdaf27376
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
