@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
 
 message(STATUS "Preparing Google Test 1.8.0")
 
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/gtest)
-
+set(GTEST_VERSION 1.8.0)
 #-----------------------------
 # Define GTest Commands
 #-----------------------------
@@ -68,7 +68,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Download step--------------
     DOWNLOAD_DIR      ${SOURCE_DIR}/download
-    URL               "https://github.com/google/googletest/archive/release-1.8.0.tar.gz"
+    URL               "https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz"
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
     CONFIGURE_COMMAND ""

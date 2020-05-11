@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
 
-set(BOOST_VERSION 1.68.0)
-set(BOOST_PACKAGE_VERSION 1_68_0)
+set(BOOST_VERSION 1.73.0)
+set(BOOST_PACKAGE_VERSION 1_73_0)
 
 message(STATUS "Preparing Boost ${BOOST_VERSION}")
 
@@ -90,7 +90,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Download step--------------
     DOWNLOAD_DIR      ${SOURCE_DIR}/download
-    URL               "http://downloads.sourceforge.net/project/boost/boost/${BOOST_VERSION}/boost_${BOOST_PACKAGE_VERSION}.tar.gz"
+    URL               "https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_PACKAGE_VERSION}.tar.gz"
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
     CONFIGURE_COMMAND ""

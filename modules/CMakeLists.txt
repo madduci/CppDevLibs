@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
 
 if(BUILD_ALL OR BUILD_OPENSSL OR BUILD_LIBEVENT OR BUILD_THRIFT)
     include(openssl.cmake)
