@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
 
-message(STATUS "Preparing Google Test 1.8.0")
+set(GTEST_VERSION 1.8.0)
+
+message(STATUS "Preparing Google Test ${GTEST_VERSION}")
 
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/gtest)
-set(GTEST_VERSION 1.8.0)
 #-----------------------------
 # Define GTest Commands
 #-----------------------------
@@ -90,7 +91,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Update/Patch step----------
     UPDATE_COMMAND    ""
-    DOWNLOAD_COMMAND ""
+    DOWNLOAD_COMMAND  ""
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
     BINARY_DIR        ${SOURCE_DIR}/build
@@ -126,8 +127,13 @@ if(WIN32)
   set(GTEST_LIBRARY_PATH ${BINARY_DIR}/${CMAKE_BUILD_TYPE}/gtest.lib)
   set(GTEST_MAIN_LIBRARY_PATH ${BINARY_DIR}/${CMAKE_BUILD_TYPE}/gtest_main.lib)
 else()
-  set(GTEST_LIBRARY_PATH ${BINARY_DIR}/libgtest.a)
-  set(GTEST_MAIN_LIBRARY_PATH ${BINARY_DIR}/libgtest_main.a)
+  if(BUILD_SHARED_LIBS)
+    set(GTEST_LIBRARY_PATH ${BINARY_DIR}/libgtest.so)
+    set(GTEST_MAIN_LIBRARY_PATH ${BINARY_DIR}/libgtest_main.so)
+  else()
+    set(GTEST_LIBRARY_PATH ${BINARY_DIR}/libgtest.a)
+    set(GTEST_MAIN_LIBRARY_PATH ${BINARY_DIR}/libgtest_main.a)
+  endif()
 endif()
 
 #gtest

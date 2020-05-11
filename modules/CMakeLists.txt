@@ -15,3 +15,7 @@ endif()
 if(BUILD_ALL OR BUILD_LIBEVENT OR BUILD_THRIFT)
     include(libevent.cmake)
 endif()
+
+if(BUILD_ALL OR BUILD_THRIFT)
+    include(thrift.cmake)
+endif()

@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
 
-message(STATUS "Preparing OpenSSL 1.1.1g")
+set(OPENSSL_VERSION 1.1.1g)
+
+message(STATUS "Preparing OpenSSL ${OPENSSL_VERSION}")
 
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/modules/OpenSSL)
-set(OPENSSL_VERSION 1.1.1g)
+
 #-----------------------------
 # Define OpenSSL Commands
 #-----------------------------
@@ -115,7 +117,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Update/Patch step----------
     UPDATE_COMMAND    ""
-    DOWNLOAD_COMMAND ""
+    DOWNLOAD_COMMAND  ""
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/src
     CONFIGURE_COMMAND ""
@@ -132,3 +134,16 @@ add_dependencies(OpenSSL OpenSSL_Download)
 set(OpenSSL_ROOT_DIR    ${OPENSSL_OUTPUT_DIR})
 set(OpenSSL_INCLUDE_DIR ${OPENSSL_OUTPUT_DIR}/include/)
 set(OpenSSL_LIBRARY_DIR ${OPENSSL_OUTPUT_DIR}/lib/)
+
+if(WIN32)
+  set(OPENSSL_CRYPTO_LIBRARY ${OPENSSL_LIBRARIES}libeay32.lib)
+  set(OPENSSL_SSL_LIBRARY    ${OPENSSL_LIBRARIES}ssleay32.lib)
+else()
+  if(BUILD_SHARED_LIBRARIES)
+    file(GLOB OPENSSL_CRYPTO_LIBRARY ${CUOPENSSL_OUTPUT_DIRRL_HOME}/lib/*crypto*.so*)
+    file(GLOB OPENSSL_SSL_LIBRARY ${OPENSSL_OUTPUT_DIR}/lib/*ssl*.so*)
+  else()
+    file(GLOB OPENSSL_CRYPTO_LIBRARY ${OPENSSL_OUTPUT_DIR}/lib/*crypto*.a*)
+    file(GLOB OPENSSL_SSL_LIBRARY ${OPENSSL_OUTPUT_DIR}/lib/*ssl*.a*)
+  endif()
+endif()

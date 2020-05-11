@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
 
-message(STATUS "Preparing libevent 2.1.11-stable")
+set(LIBEVENT_VERSION 2.1.11-stable)
+
+message(STATUS "Preparing libevent ${LIBEVENT_VERSION}")
 
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/libevent)
-set(LIBEVENT_VERSION 2.1.11-stable)
+
 #-----------------------------
 # Define libevent Commands
 #-----------------------------
@@ -91,7 +93,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Update/Patch step----------
     UPDATE_COMMAND    ""
-    DOWNLOAD_COMMAND ""
+    DOWNLOAD_COMMAND  ""
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
     CMAKE_ARGS        ${libevent_OPTIONS}

@@ -8,16 +8,30 @@ message(STATUS "Preparing Boost ${BOOST_VERSION}")
 set(SOURCE_DIR ${CMAKE_BINARY_DIR}/Boost)
 
 #-----------------------------
+# Define Boost Modules
+#-----------------------------
+
+set(BOOST_MODULES --with-libraries=chrono,date_time,filesystem,log,program_options,system,thread)
+set(BOOST_LIBRARIES 
+  --with-chrono
+  --with-date_time
+  --with-filesystem
+  --with-log
+  --with-program_options
+  --with-system
+  --with-thread)
+
+#-----------------------------
 # Define Boost Commands
 #-----------------------------
 
 set( Boost_Bootstrap_Command )
 if( UNIX )
-  set( Boost_Bootstrap_Command ./bootstrap.sh )
+  set( Boost_Bootstrap_Command ./bootstrap.sh ${BOOST_MODULES} --prefix=${BOOST_OUTPUT_DIR})
   set( Boost_b2_Command ./b2 )
 elseif( WIN32 )
   set( Boost_Bootstrap_Command bootstrap.bat )
-  set( Boost_b2_Command b2.exe)
+  set( Boost_b2_Command b2.exe ${BOOST_MODULES} --prefix=${BOOST_OUTPUT_DIR} --libdir=${BOOST_OUTPUT_DIR}/lib --includedir=${BOOST_OUTPUT_DIR}/include)
 endif()
 
 #-----------------------------
@@ -34,8 +48,10 @@ if(${ARCHITECTURE} STREQUAL "x86_64") #64 bit compiler
   set(BOOST_ADDRESS_MODEL address-model=64)
 endif()
 
-if (${CMAKE_CXX_COMPILER_ID} MATCHES "gcc")
-  #
+if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
+  set(BOOST_TOOLSET toolset=gcc)
+elseif (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+  set(BOOST_TOOLSET toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++")
 elseif(MSVC) #MSVC
   set(BOOST_TOOLSET toolset=msvc)  
   if(MSVC_VERSION EQUAL 1700)
@@ -76,7 +92,7 @@ endif()
 #-----------------------------
 
 set(BOOST_BUILD_OPTIONS ${BOOST_ADDRESS_MODEL} ${BOOST_ARCHITECTURE} ${BOOST_TOOLSET} ${BOOST_BUILD_TYPE} ${BOOST_LINK_TYPE})
-set(BOOST_BUILD_FLAGS --threading=multi --warning-as-errors=off)
+set(BOOST_BUILD_FLAGS --threading=multi --warnings=off --warning-as-errors=off  define=BOOST_USE_WINAPI_VERSION=0x0600 stage)
 set(BOOST_BUILD_COMMAND ${Boost_b2_Command} install ${BOOST_BUILD_OPTIONS} ${BOOST_BUILD_FLAGS} -j2)
 
 #-----------------------------
@@ -113,7 +129,7 @@ ExternalProject_Add(
     STAMP_DIR         ${SOURCE_DIR}/stamp
     #--Update/Patch step----------
     UPDATE_COMMAND    ""
-    DOWNLOAD_COMMAND ""
+    DOWNLOAD_COMMAND  ""
     #--Configure step-------------
     SOURCE_DIR        ${SOURCE_DIR}/source
     CONFIGURE_COMMAND ${Boost_Bootstrap_Command} --prefix=${BOOST_OUTPUT_DIR}
@@ -128,5 +144,11 @@ ExternalProject_Add(
 add_dependencies(Boost Boost_Download)
 
 set(Boost_ROOT        ${BOOST_OUTPUT_DIR})
+set(BOOST_ROOT        ${BOOST_OUTPUT_DIR})
 set(Boost_INCLUDE_DIR ${BOOST_OUTPUT_DIR}/include/)
 set(Boost_LIBRARY_DIR ${BOOST_OUTPUT_DIR}/lib/)
+if(WIN32)
+  set(Boost_INCLUDE_DIR ${BOOST_OUTPUT_DIR}/include/${Boost_INCLUDE_DIR_FOLDER_VERSION}/)
+endif()
+
+add_definitions(-DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
